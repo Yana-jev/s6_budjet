@@ -1,0 +1,91 @@
+   
+   <app-welcome ></app-welcome>
+   <div class="container">
+      <form [formGroup]="budgetForm">
+         @for (service of services; track service){
+      <div class="card p-3 mb-5 ">
+         <div class="row align-items-center card-body">
+            <div class="col-md-8">
+               <div>
+                     <label>
+                        <h3>{{ service.name }}</h3> <br>
+                        {{ service.article }}
+                     </label>
+            </div>
+         </div>
+            <div class="col-md-2">
+               <h3>{{ service.price }} €</h3>
+            </div>
+            <div class="col-md-2 form-check">
+               <input class="form-check-input" type="checkbox" [formControlName]="service.name">
+               <label class="form-check-label" for="flexCheck">
+               Elegir
+               </label>
+            </div>
+            @if(service.name ==="Web" && budgetForm.get('Web')!.value){
+               <app-panel  (webCostChange)="updateWebCost($event)"></app-panel>
+               
+            }
+      
+         <div class="col text-right">
+      
+         </div>
+      </div>
+         </div>}
+         <div class="d-flex justify-content-end mt-2 p-4">
+            <h3>Total presupuestado: {{presupuesto}}€</h3>
+         </div>
+
+         <div class="card p-3 mb-5 ">
+         <div class=" mt-2 p-4">
+            <h4>
+               Pedir presupuesto</h4>
+      </div>
+      <div class="d-flex justify-content-around">
+         <input type="text" class="form-control p-2 w-25" placeholder="nombre" formControlName="nombre">
+         @if (budgetForm.get('nombre')?.invalid && budgetForm.get('nombre')?.touched) {
+            <div>
+               @if (budgetForm.get('nombre')?.errors?.['required']) {
+               <small>El nombre es requerido.</small>
+               }
+               @if (budgetForm.get('nombre')?.errors?.['minlength']) {
+               <small>El nombre debe tener al menos 3 caracteres.</small>
+               }
+            </div>
+         }
+         
+         <input type="tel" class="form-control p-2 w-25" placeholder="tel" formControlName="telefono">
+         @if (budgetForm.get('telefono')?.invalid && budgetForm.get('telefono')?.touched) {
+            <div>
+               @if (budgetForm.get('telefono')?.errors?.['required']) {
+               <small>El teléfono es requerido.</small>
+               }
+               @if (budgetForm.get('telefono')?.errors?.['pattern']) {
+               <small>El teléfono debe tener 9 dígitos.</small>
+               }
+            </div>
+         }
+         
+         <input type="email" class="form-control p-2 w-25" placeholder="e-mail" formControlName="email">
+         @if (budgetForm.get('email')?.invalid && budgetForm.get('email')?.touched) {
+            <div>
+               @if (budgetForm.get('email')?.errors?.['required']) {
+               <small>El email es requerido.</small>
+               }
+               @if (budgetForm.get('email')?.errors?.['pattern']) {
+               <small>El email no es válido.</small>
+               }
+            </div>
+         }
+         <button (click)="submitBudget()" type="button" class="btn btn-success ">Solicitar presupuesto</button>
+         
+         </div>
+         
+
+      
+         
+      </div>
+   
+
+     
+

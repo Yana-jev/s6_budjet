@@ -1,0 +1,39 @@
+/* Для Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+$greenColor:  rgba(0, 255, 0, 0.6);
+
+
+
+.container{
+padding: 50px;
+align-items: center;
+}
+
+
+.card {
+transition: box-shadow 0.3s ease-in-out;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.card:hover {
+box-shadow: 0 4px 8px $greenColor
+}
+
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+background-color: green;
+border-color: green;
+}
+.form-check-input:checked {
+background-color: green;
+border-color: green;
+}
+
+
+
+

@@ -1,0 +1,63 @@
+@for (budget of filterItems(); track $index) {
+   @if ($index === 0) {
+<div class="container">
+   <div class="row">	
+      <h3>Listado de presupuestos</h3>
+   </div>
+   
+   <div class="d-flex justify-content-end ">
+      
+         <button type="button" class="btn btn-outline-secondary me-3" (click)="sortBy('totalCost')">Precio</button>
+         <button type="button" class="btn btn-outline-secondary me-3" (click)="sortBy('fecha')">Fecha</button>
+         <button type="button" class="btn btn-outline-secondary me-3" (click)="sortBy('nombre')">ABC</button>
+         
+         <input type="text" class="form-control icon-custom" [(ngModel)]="searchName" placeholder="Search..."
+         (keyup)="filterItems()">
+   
+      </div>
+      
+   </div>
+}
+
+
+
+<div class="container">
+   <div class="card p-3 mb-5 ">
+   <div class="row align-items-start card-body">
+   
+      <div class="col-md-5">
+         <p class="card-title fs-4">{{ budget.nombre }}</p>
+         <p class="card-text">{{ budget.email }}</p>
+         <p class="card-text">{{ budget.telefono }}</p>
+   
+      </div>
+   
+      <div class="col-md-4">
+         <p class="usuario fs-5">Servicios:</p>
+            <ul>
+            @for (service of budget.services; track service) {
+               
+               <li>{{ service.name }}: {{ service.price }} €</li>
+               @if (service.name === 'Web'){
+                  <p>(pages: {{ budget.pages }}, languages: {{ budget.languages }})</p>
+                  }
+            }
+         
+            </ul>
+            
+         </div>
+   
+      <div class="col-md-3">
+         <p class="price fs-5">Total: <p class="small-euro">{{ budget.totalCost }} €</p>
+      </div>
+      </div>
+   </div>
+</div>
+}
+
+
+
+
+
+
+
