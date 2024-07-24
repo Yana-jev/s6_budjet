@@ -7,5 +7,7 @@ export const routes: Routes = [
 
 {path: '', component: HomeComponent},
 {path: 'list', component: BudjetListComponent},
+{path: 'home', component: HomeComponent},
+
 
 ];

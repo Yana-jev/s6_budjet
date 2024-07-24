@@ -5,6 +5,7 @@ import { PanelComponent } from '../panel/panel.component';
 import { Ilist } from '../ilist';
 import { CommonModule } from '@angular/common';
 import { Service } from '../ilist';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-budjet-list',
@@ -25,6 +26,8 @@ export class BudjetListComponent  {
   serachForm = new FormGroup({
     nombre: new FormControl('')
   })
+  router = inject(Router);
+
 
   constructor(private budjetService: BudjetService) {
     this.services = this.budgetService.services;
@@ -75,5 +78,9 @@ sortBy(property: string): void {
     );
 
     return filtered.length > 0 ? filtered : [{ nombre: 'No hay resultados'} as Ilist];
+  }
+
+  goHome(){
+    this.router.navigate(['/home']); 
   }
 }

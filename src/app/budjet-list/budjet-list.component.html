@@ -1,11 +1,14 @@
+<div class="container align-items-center">
+   <h3 class="col-10">Listado de presupuestos</h3>
+   <button (click)="goHome()" type="button" class="col btn btn-success">Home</button>
+
+
 @for (budget of filterItems(); track $index) {
    @if ($index === 0) {
-<div class="container">
-   <div class="row">	
-      <h3>Listado de presupuestos</h3>
-   </div>
+
+   <div class="row mb-2 ">	
    
-   <div class="d-flex justify-content-end ">
+   <div class="d-flex justify-content-end">
       
          <button type="button" class="btn btn-outline-secondary me-3" (click)="sortBy('totalCost')">Precio</button>
          <button type="button" class="btn btn-outline-secondary me-3" (click)="sortBy('fecha')">Fecha</button>
@@ -13,16 +16,14 @@
          
          <input type="text" class="form-control icon-custom w-25" [(ngModel)]="searchName" placeholder="Search..."
          (keyup)="filterItems()">
-   
+      </div>
       </div>
       
-   </div>
+
 }
 
 
-
-<div class="container">
-   <div class="card p-3 mb-5 ">
+   <div class="card p-3 mb-2">
    <div class="row align-items-start card-body">
    
       <div class="col-md-5">
@@ -52,9 +53,8 @@
       </div>
       </div>
    </div>
-</div>
-}
 
+}
 
 
 

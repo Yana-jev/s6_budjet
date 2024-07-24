@@ -73,10 +73,16 @@ export class HomeComponent {
       };
 
       this.budgetService.submitBudget(budget);
-      this.router.navigate(['/list']); 
+      alert('Presupuesto creado con éxito');
+    } else {
+      alert('Selecciona al menos un servicio');
     }
   }
 
+
+  goToList(){
+    this.router.navigate(['/list']); 
+  }
 }
 
 
