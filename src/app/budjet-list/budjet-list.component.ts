@@ -38,24 +38,32 @@ export class BudjetListComponent  {
     console.log('Budgets:', this.budgets);
   }
 
-  sortBy(property: string): void {
-    this.budgets.sort((a: Ilist, b: Ilist) => {
-      if (property === 'totalCost' || property === 'fecha') {
-        return new Date(a[property]) < new Date(b[property]) ? -1 : new Date(a[property]) > new Date(b[property]) ? 1 : 0;
-      } else if (property === 'nombre') {
-        return a.nombre.localeCompare(b.nombre);
-      }
-      return 0;
-    });
-    this.filteredBudgets = [...this.budgets];
-  }
-  
+
+  alrevez: boolean = true;  
+sortBy(property: string): void {
+  this.budgets.sort((a: Ilist, b: Ilist) => {
+    let comparison = 0;
+
+    if (property === 'totalCost') {
+      comparison = a.totalCost - b.totalCost;  
+    } else if (property === 'fecha') {
+      const dateA = new Date(a.fecha).getTime();
+      const dateB = new Date(b.fecha).getTime();
+      comparison = dateA - dateB;  
+    } else if (property === 'nombre') {
+      comparison = a.nombre.localeCompare(b.nombre);  
+    }
 
 
-  // buscarNombre(event?: any): void {
-  //   const nombre = this.serachForm.value.nombre;
-  //   this.budgets = this.budgetService.buscarPorNombre(nombre!)
-  // }
+    return this.alrevez ? comparison : -comparison;
+  });
+
+  this.filteredBudgets = [...this.budgets];
+  this.alrevez = !this.alrevez; 
+}
+
+
+
 
   filterItems() {
     if (!this.searchName.trim()) {
