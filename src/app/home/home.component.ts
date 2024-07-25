@@ -34,9 +34,17 @@ export class HomeComponent {
   formBuild = inject(FormBuilder);
   budgetService = inject(BudjetService);
   router = inject(Router);
+  
 
 
   constructor() {
+    this.budgetForm = this.formBuild.group({
+      nombre: ['',[Validators.required, Validators.minLength(3)]],
+      telefono: ['', [Validators.required, Validators.pattern(/^\d{9}$/)]],
+      email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]{2,}$/)]],
+      pages: [1, [Validators.required, Validators.min(1)]],
+      languages: [1, [Validators.required, Validators.min(1)]],
+    })
     this.budgetForm = this.budgetService.initializeBudgetForm(this.formBuild);
     this.services = this.budgetService.services;
     this.budgetForm.valueChanges.subscribe(value => {
@@ -78,7 +86,7 @@ export class HomeComponent {
 openModal(): void {
   const modalElement = document.getElementById('successModal');
   if (modalElement) {
-    // Используйте window.bootstrap вместо просто bootstrap
+    
     const modal = new (window as any).bootstrap.Modal(modalElement);
     modal.show();
   }
@@ -108,7 +116,7 @@ clearForm(): void {
       myCheckbox1: new FormControl(false),
       
     }, requireCheckboxesToBeCheckedValidator()),
-  
+    myCheckbox1: new FormControl(false, [Validators.requiredTrue]),
   });
 
 

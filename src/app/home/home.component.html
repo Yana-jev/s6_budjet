@@ -35,10 +35,10 @@
          </div>}
 
 
-         <!-- <div class="label">Check at least one checkbox <span class="highlight">*</span></div>
-         <div class="invalid-feedback" *ngIf="form.controls['myCheckboxGroup'].errors && form.controls['myCheckboxGroup'].errors['requireOneCheckboxToBeChecked']">
-            At least one checkbox is required to be checked
-         </div> -->
+         <div class="label">Check at least one checkbox <span class="highlight">*</span></div>
+         <div class="invalid-feedback" *ngIf="budgetForm.hasError('requireOneCheckboxToBeChecked')">
+         At least one checkbox is required to be checked
+         </div>
          
          
    
