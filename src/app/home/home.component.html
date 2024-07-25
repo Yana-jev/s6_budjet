@@ -17,7 +17,7 @@
                <h3>{{ service.price }} €</h3>
             </div>
             <div class="col-md-2 form-check">
-               <input class="form-check-input" type="checkbox" [formControlName]="service.name" formControlName="myCheckbox1" id="myCheckbox1">
+               <input class="form-check-input" type="checkbox" [formControlName]="service.name" >
                <label class="form-check-label" for="flexCheck">
                Elegir
                </label>
@@ -35,12 +35,11 @@
          </div>}
 
 
-         <div class="label">Check at least one checkbox <span class="highlight">*</span></div>
-         <div class="invalid-feedback" *ngIf="budgetForm.hasError('requireOneCheckboxToBeChecked')">
-         At least one checkbox is required to be checked
-         </div>
-         
-         
+      
+         @if(!isAnyCheckboxChecked){
+            <p style="color:red">At least one checkbox is required to be checked</p>
+         }
+
    
          
          <div class="d-flex justify-content-end mt-2 p-4">

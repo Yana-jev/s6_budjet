@@ -8,7 +8,7 @@ import { BudjetListComponent } from '../budjet-list/budjet-list.component';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Validators } from '@angular/forms';
 import { Ilist, Service } from '../ilist';
-import { requireCheckboxesToBeCheckedValidator } from '../validation';
+
 import { CommonModule } from '@angular/common';
 
 
@@ -34,19 +34,26 @@ export class HomeComponent {
   formBuild = inject(FormBuilder);
   budgetService = inject(BudjetService);
   router = inject(Router);
+  isAnyCheckboxChecked: boolean = false;
   
 
 
   constructor() {
-    
     this.budgetForm = this.budgetService.initializeBudgetForm(this.formBuild);
     this.services = this.budgetService.services;
+  
+  
     this.budgetForm.valueChanges.subscribe(value => {
       this.calculateBudget(value);
+      this.checkCheckboxes(value);
+      
+      this.budgetForm.updateValueAndValidity();
     });
-    
   }
 
+  checkCheckboxes(value: any): void {
+    this.isAnyCheckboxChecked = this.services.some(service => value[service.name]);
+  }
 
   calculateBudget(value: any): void {
     this.presupuesto = this.budgetService.calculateBudget(value, this.costeTotal);
@@ -97,6 +104,7 @@ clearForm(): void {
   });
   this.presupuesto = 0;
   this.costeTotal = 0;
+  this.isAnyCheckboxChecked = false;
 }
 
   goToList(){
@@ -104,14 +112,7 @@ clearForm(): void {
   }
 
 
-  form = new FormGroup({
-    
-    myCheckboxGroup: new FormGroup({
-      myCheckbox1: new FormControl(false),
-      
-    }, requireCheckboxesToBeCheckedValidator()),
-    myCheckbox1: new FormControl(false, [Validators.requiredTrue]),
-  });
+
 
 
 
