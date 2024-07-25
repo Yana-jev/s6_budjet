@@ -2,6 +2,7 @@ import { Injectable, signal } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Ilist, Service } from '../ilist';
 import { Validators } from '@angular/forms';
+import { requireCheckboxesToBeCheckedValidator } from '../validation';
 
 @Injectable({
   providedIn: 'root'
@@ -40,10 +41,12 @@ export class BudjetService {
       email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]{2,}$/)]],
       pages: [1, [Validators.required, Validators.min(1)]],
       languages: [1, [Validators.required, Validators.min(1)]],
+      
       SEO: false,
       Ads: false,
       Web: false
     });
+    
   }
 
   submitBudget(budget: Ilist): void {
