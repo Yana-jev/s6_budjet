@@ -4,8 +4,9 @@
 Esta aplicación es una herramienta de gestión de presupuestos que permite a los usuarios crear, ordenar y compartir presupuestos.
 
 ## Características
--Crear presupuestos
--Guardar los presupuestos en el almacenamiento local del navegador.
+
+- Crea presupuestos
+- Guarda los presupuestos en el almacenamiento local del navegador.
 - Listado de servicios**: Muestra una lista de servicios con sus respectivos precios.
 - Validación de formularios**: Verifica la validez de los campos nombre, teléfono y email.
 
