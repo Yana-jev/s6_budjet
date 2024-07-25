@@ -38,13 +38,7 @@ export class HomeComponent {
 
 
   constructor() {
-    this.budgetForm = this.formBuild.group({
-      nombre: ['',[Validators.required, Validators.minLength(3)]],
-      telefono: ['', [Validators.required, Validators.pattern(/^\d{9}$/)]],
-      email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]{2,}$/)]],
-      pages: [1, [Validators.required, Validators.min(1)]],
-      languages: [1, [Validators.required, Validators.min(1)]],
-    })
+    
     this.budgetForm = this.budgetService.initializeBudgetForm(this.formBuild);
     this.services = this.budgetService.services;
     this.budgetForm.valueChanges.subscribe(value => {
