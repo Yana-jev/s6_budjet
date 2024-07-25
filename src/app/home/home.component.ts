@@ -108,7 +108,7 @@ clearForm(): void {
       myCheckbox1: new FormControl(false),
       
     }, requireCheckboxesToBeCheckedValidator()),
-    mySingleCheckbox: new FormControl(false, [Validators.requiredTrue])
+  
   });
 
 
