@@ -1,3 +1,51 @@
+# Budget Management Application
+
+This application is a budget management tool that allows users to create, organize, and share budgets.
+
+---
+
+## Features
+
+- **Create Budgets**: Easily create detailed budgets.
+- **Save Budgets**: Store budgets in the browser's local storage.
+- **Service Listing**: Displays a list of services with their respective prices.
+- **Form Validation**: Ensures the validity of fields such as name, phone, and email.
+
+---
+
+## Requirements
+
+- **Node.js**
+- **Angular CLI**
+
+---
+
+## Installation
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/your-username/your-repository.git
+2. Navigate to the project directory:
+    ```bash
+    cd tu-repositorio
+    ```
+3. Install the dependencies:
+    ```bash
+    npm install
+    ```
+Start the application:
+ ```bash
+    ng serve
+    ```
+Open your browser and navigate to http://localhost:4200.
+
+## Technologies Used
+- **Angular 18**
+- **HTML**
+- **SASS**
+- **Bootstrap 5**
+
+
 # S6Budjet
 # Gestión de Presupuestos
 
